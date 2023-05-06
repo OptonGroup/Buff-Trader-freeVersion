@@ -19,6 +19,8 @@ async function main(){
             if (stickers[j]["wear"] != 0) var stickerSteamPrice = 0;
             else var stickerSteamPrice = steamPricesJson[stickerName];
 
+            if (!stickerSteamPrice) stickerSteamPrice = 0;
+
             if (stickers[j]["wear"] == 0){
                 if (!stickersCount[stickerName])
                     stickersCount[stickerName] = [0, stickerSteamPrice];
