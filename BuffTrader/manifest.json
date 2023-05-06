@@ -1,0 +1,26 @@
+{
+    "action": {
+        "default_icon": "src/asset/icon48.png",
+        "default_popup": "src/popup.html",
+        "default_title": "Buff Trader"
+    },
+
+    "content_scripts": [{
+            "css": ["src/css/goodsPage.css"],
+            "js": ["src/lib/jquery-3.6.0.min.js", "src/js/goodsShowStickersPrice.js"],
+            "matches": ["https://buff.163.com/goods/*"]
+        }
+    ],
+
+    "description": "Best trade experience on Buff",
+    "icons": {
+        "16": "src/asset/icon16.png",
+        "32": "src/asset/icon32.png",
+        "48": "src/asset/icon48.png",
+        "128": "src/asset/icon128.png"
+    },
+    "manifest_version": 3,
+    "name": "Buff Trader",
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "version": "0.1.1"
+}
