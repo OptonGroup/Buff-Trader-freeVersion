@@ -1,5 +1,5 @@
 async function main(){ 
-    var url = "https://raw.githubusercontent.com/OptonGroup/buff-ext/main/json.json";
+    var url = "https://raw.githubusercontent.com/OptonGroup/Buff-Trader/main/json.json";
     var steamPricesJson = await (await fetch(url)).json();
 
     var minimalPrice = Number($("a.i_Btn.i_Btn_trans_bule.active").text().match(/[-]{0,1}[\d]*[.]{0,1}[\d]+/g)[0]);
