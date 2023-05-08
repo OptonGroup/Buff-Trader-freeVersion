@@ -58,6 +58,10 @@ async function main(){
             var domElement = `<div class="f_12px" style="color: #009800;">+`+ Math.abs(delt).toString() + `%</div>`
         }
         good.find(".t_Left").eq(3).append(domElement);
+        
+        if (Number(delt) >= 15){
+            good.css("background-color", "lightgreen");
+        }
     }
 }
 
