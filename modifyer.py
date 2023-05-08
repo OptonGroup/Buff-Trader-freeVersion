@@ -29,8 +29,8 @@ def get_prices_from_buff163():
 
 	for name in data:
 		try:
-			price = data[name]["starting_at"]["price"]
-			price = round(price/0.14475, 2)
+			price = data[name]["highest_order"]["price"]
+			price = round(price/0.1447, 2)
 		except:
 			price = 0
 
