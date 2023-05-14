@@ -2,7 +2,9 @@ async function main(){
     var url = "https://raw.githubusercontent.com/OptonGroup/Buff-Trader/main/json.json";
     var steamPricesJson = await (await fetch(url)).json();
 
-    var minimalPrice = Number($("a.i_Btn.i_Btn_trans_bule.active").text().match(/[-]{0,1}[\d]*[.]{0,1}[\d]+/g)[0]);
+    var minPriceTable = $($("#market_min_price_pat")[0].innerText);
+    minPriceTable = minPriceTable.find(".has_des .custom-currency")[0].attributes;
+    var minimalPrice = Number(minPriceTable["data-price"].value);
     console.log("minimal price on buff - " + minimalPrice.toString() + "¥");
 
     var goods = $("tr.selling");
@@ -15,13 +17,20 @@ async function main(){
         var stickers = json["info"]["stickers"];
         var stickersCount = new Object();
         for (let j = 0; j < stickers.length; ++j){
-            var stickerName = "Sticker | " + stickers[j]["name"];
-            if (stickers[j]["wear"] != 0) var stickerSteamPrice = 0;
-            else var stickerSteamPrice = steamPricesJson[stickerName];
+            var stickerName;
+            if (stickers[j]["category"] == "patch"){                    // Parsing Agents
+                stickerName = "Patch | " + stickers[j]["name"];
+            }else{                                                      // Parsing Skins
+                stickerName = "Sticker | " + stickers[j]["name"];
+            }
+
+            var stickerSteamPrice;
+            if (stickers[j]["category"] == "sticker" && stickers[j]["wear"] != 0) stickerSteamPrice = 0;
+            else stickerSteamPrice = steamPricesJson[stickerName];
 
             if (!stickerSteamPrice) stickerSteamPrice = 0;
 
-            if (stickers[j]["wear"] == 0){
+            if (stickerSteamPrice){
                 if (!stickersCount[stickerName])
                     stickersCount[stickerName] = [0, stickerSteamPrice];
                 stickersCount[stickerName][0] += 1;
