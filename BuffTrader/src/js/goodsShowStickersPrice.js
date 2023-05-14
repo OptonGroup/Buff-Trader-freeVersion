@@ -77,6 +77,9 @@ function checkMarketLoading(refreshId) {
     var market_listenings = $("#market-selling-list")
     if (market_listenings.length){
         clearInterval(refreshId);
+        $(".pager").click(function () {     // monitor if the user goes to another page
+            checkReloader();
+        });
         console.log("Market was loaded");
         showStickersPrice();
     }
@@ -90,9 +93,5 @@ function checkReloader(){
         100
     );
 }
-
-$(document).click(function () {     // monitor if the user goes to another page
-    checkReloader();
- });
 
 checkReloader();
