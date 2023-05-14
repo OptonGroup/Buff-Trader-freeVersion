@@ -1,4 +1,4 @@
-async function main(){ 
+async function showStickersPrice(){ 
     var url = "https://raw.githubusercontent.com/OptonGroup/Buff-Trader/main/json.json";
     var steamPricesJson = await (await fetch(url)).json();
 
@@ -8,7 +8,6 @@ async function main(){
     console.log("minimal price on buff - " + minimalPrice.toString() + "¥");
 
     var goods = $("tr.selling");
-    console.log(goods);
     for (let i = 0; i < goods.length; ++i){
         var good = goods.eq(i);
         var goodPrice = good.find(".t_Left").eq(3).text().match(/[-]{0,1}[\d]*[.]{0,1}[\d]+/g)[0];
@@ -79,14 +78,21 @@ function checkMarketLoading(refreshId) {
     if (market_listenings.length){
         clearInterval(refreshId);
         console.log("Market was loaded");
-        main();
+        showStickersPrice();
     }
 }
 
-// check if the products are loaded on the page
-var refreshId = setInterval(
-    function(){
-        checkMarketLoading(refreshId)
-    },
-    100
-);
+function checkReloader(){
+    var refreshId = setInterval(
+        function(){
+            checkMarketLoading(refreshId)
+        },
+        100
+    );
+}
+
+$(document).click(function () {     // monitor if the user goes to another page
+    checkReloader();
+ });
+
+checkReloader();
