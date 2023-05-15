@@ -91,7 +91,7 @@ function checkMarketLoading(refreshId) {
     }
 }
 function checkReloader(){
-    if (!window.location.hash.match("tab=selling")) return;
+    if (window.location.hash.match("tab=") && !window.location.hash.match("tab=selling")) return;
     var refreshId = setInterval(
         function(){
             checkMarketLoading(refreshId)
