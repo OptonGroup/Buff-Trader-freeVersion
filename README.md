@@ -14,7 +14,7 @@ The current version at the moment is v0.3.1
 
 ## How to install
 
-You can install this extension through your browser's developer mode
+You can install this extension through your browser's developer mode. [This manual on dev.to](https://dev.to/ben/how-to-install-chrome-extensions-manually-from-github-1612)
 
 1. Download all the files from this repository to your device
 2. Enter this link in the search box
