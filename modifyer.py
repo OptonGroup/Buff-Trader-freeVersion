@@ -2,7 +2,7 @@ import json
 import requests
 
 items = dict()
-from_usd_to_rbm = 0.139585
+from_usd_to_rbm = 0.140221
 
 def get_prices_from_steam():
     req = requests.get("https://prices.csgotrader.app/latest/steam.json")
