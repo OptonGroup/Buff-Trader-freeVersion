@@ -29,8 +29,8 @@ def get_prices_from_buff163():
     data = req.json()
 
     for name in data:
-        if data[name]['highest_order']['price']:
-            price = data[name]['highest_order']['price']
+        if data[name]['starting_at']['price']:
+            price = data[name]['starting_at']['price']
         else:
             price = 0
 
